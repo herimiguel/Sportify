@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="View Artist" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 floatright">
+                
+                <div class="main">
+                    <div class="right">
+                        <a href="{% url 'user_app:logout' %}">LOGOUT</a>
+                    </div>
+                    <h1>{{artist.artist_name}}</h1>
+                    <h4>{{artist.artist_bio}}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="md-col-4 floatright">
+                <hr>
+                <a href="{% url 'music_app:index' %}">HOME</a> |
+                <a href="{% url 'music_app:addAlbum' artist_id=artist.id %}">ADD ALBUM</a>
+            </div>
+        </div>
+                
+    
+        <div class="row">
+            <div class="col-md-4 floatright main">
+                <table class="table table-hover box">
+                    <thead>
+                        <tr>
+                        <th>ALBUM NAME </th>  
+                        <th>YEAR</th>
+                        <th></th>
+                        </tr>
+                        {% for album in albums %}
+                    </thead>
+                    <div class="main">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{album.album_name}}</a>
+                            </td>
+                            <td>
+                                {{album.album_year}}
+                            </td>
+                            <td>
+                                <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
+                                <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </div>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

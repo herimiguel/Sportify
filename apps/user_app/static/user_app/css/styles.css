@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    padding: 50px;
+}
+.img{
+    width: 400px;
+}
+
+.container-fluid {
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-color: black;
+    padding: 50px;
+}
+
+.login {
+    display: none;
+}
+
+.bio {
+    color: white;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.title {
+    font-size: 20px;
+    text-align: right;
+    margin-right: 80px;
+}
+
+.main {
+    float: right;
+    display: none; 
+    height: 200px;
+    background-color: black;
+    
+} 
+
+ .jumbotron {
+    border: 2px solid black;
+    /* color: white; */
+    text-align: right;
+    background-color: transparent;
+    padding: 50px;
+} 
+
+.box {
+    overflow: scroll;
+    bottom: 40px; 
+}
+
+.action_button {
+    float: right;
+    font-size: 1.4em;
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.floatright {
+    text-align: center;
+    float: right;
+    
+}
+
+.header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 24px;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    text-align: left;
+}
+
+.groupbox {
+    display: none;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-size: 1.2em;
+    bottom: 0%;
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.grouplist, .grouplist1 {
+    display: none;
+}

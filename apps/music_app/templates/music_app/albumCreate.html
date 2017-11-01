@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Login/Registration" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="jumbotron floatright main">
+                    <form action="/logout">
+                        <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
+                    </form>
+                    <div class="row">
+                    <h1>drop an album</h1>
+                    <h2 class="right">by {{ artist.artist_name }}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="md-col-6">
+                        <a href="{% url 'music_app:index' %}">HOME</a> |
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 floatright main">
+                <form action="{% url 'music_app:createAlbum' artist_id=artist.id %}" method='POST'>
+                    {% csrf_token %}
+                    <input type='text' class="form-control" name='album_name' placeholder="Album name" autofocus><br>
+                    <input type='text' class="form-control" name='album_year' placeholder="Release year"><br>
+                    <input type='submit' class="btn btn-primary" value='drop it'>
+                </form>
+            </div>
+        </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Login/Registration" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 floatright">
+                <div class="main">
+                <a class="right" href="{% url 'user_app:logout' %}">LOGOUT</a>
+                </div>
+                <div class="main">
+                <h1 class="left">{{album.album_name}}</h1>
+                <h4 class="right">by {{ artist.artist_name }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="md-col-4">
+                <a href="{% url 'music_app:index' %}">HOME</a> |
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-4 floatright">
+                <table class="table table-hover box">
+                    <thead>
+                        <tr>
+                            <th>SONG NAME </th>  
+                            <th>YEAR</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for song in songs %}
+                        <tr>
+                            <td><a href="{% url 'music_app:viewSong' song_id=song.id %}">{{song.song_name}}</a></td>
+                            <td>{{song.song_year}}</td>
+                            <td><a href="{% url 'music_app:viewSong' song_id=song.id %}">Show Song</a> |  <a href="{% url 'music_app:deleteSong' album_id=album.id song_id=song.id  %}">Delete Song</a> 
+                            <!-- <td><a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |  <a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> |  -->
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4 floatright">
+            <form action="{% url 'music_app:createSong' album_id=album.id artist_id=artist.id %}" method='POST'>
+                {% csrf_token %}
+                <input type='text' class="form-control" name='song_name' placeholder="song name"><br>
+                <input type='text' class="form-control" name='song_year' placeholder="song year"><br>
+                <input type='submit' class="btn btn-primary" value='Create Song'><br>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

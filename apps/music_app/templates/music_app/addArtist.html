@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Welcome" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron main">
+                    <form action="/logout">
+                        <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
+                    </form>
+                    <h1>add an artist</h1>
+                    <div class="row">
+                        <div class="md-col-6">
+                        <a href="{% url 'music_app:index' %}">HOME</a> |
+                        <a href="{% url 'playlist_app:addPlaylist' %}">NEW PLAYLIST</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 floatright">
+                <!-- {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %} -->
+            <form action="{% url 'music_app:createArtist' %}" method='POST'>
+            {% csrf_token %}
+                <input type='text' class="form-control" = name='artist_name' placeholder="artist name"><br>
+                <input type='text'class="form-control" name='artist_bio' placeholder="artist bio"><br>
+                <input type='submit' class="btn btn-primary" value='Create Artist'>
+            </form>
+        </div>
+</body>
+</html>

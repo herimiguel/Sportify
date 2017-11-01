@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}">
+        <h1>EDIT ARTIST</h1>
+    <form action="{% url 'music_app:updateArtist' artist_id=artist.id %}" method='POST'>
+        {% csrf_token %}
+        <label for='artist_name'>ARTIST NAME:</label>
+        <input type='text' name='artist_name' value="{{artist.artist_name}}"><br>
+        <label for='artist_bio'>ARTIST BIO:</label>
+        <input type='text' name='artist_bio' value="{{artist.artist_bio}}"><br>
+        <input type='submit' value='Update'>
+    </form>
+    <a href="{% url 'music_app:viewArtist' artist_id=artist.id %}">Show</a> | <a href="/">Go Back</a><br>
+</body>
+</html>

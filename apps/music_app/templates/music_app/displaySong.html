@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta name='viewport' content="width=device-width initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Welcome" charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="{% static 'user_app/sportify.js' %}"></script>
+</head>
+<body background= "{% static 'user_app/css/record.png' %}">
+
+<div class="main">
+    <h2>Artist: {{song.album.artist.artist_name}}</h2>            
+    <h2>Album: {{song.album.album_name}}</h2>
+    <h2>Song: {{song.song_name}}</h2>
+    <h2>Year: {{song.song_year}}</h2>
+    <h2>you created on: {{song.created_at}}</h2>
+    <a href="/">go HOme</a>
+</div>
+
+</body>
+</html>
