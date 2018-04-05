@@ -14,58 +14,43 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron main">
-                        
-                        <a href="{% url 'user_app:logout' %}">LOGOUT</a>
+                <div class="jumbotron main">    
+                    <a href="{% url 'user_app:logout' %}">LOGOUT</a>
                     <h1>your music, {{request.session.first_name}}.</h1>
                     <div class="row">
                         <div class="md-col-4">
                             <a href="">HOME</a> |
                             <a href="{% url 'music_app:addArtist' %}">NEW ARTIST</a> |
                             <a href="{% url 'playlist_app:addPlaylist' %}">NEW PLAYLIST</a>
-                            
                         </div>
-
                     </div>
                 </div>
             </div>
         </div> 
+    </div> 
 
-<div class="row">
-    <div class=" ">
-        <div class="group">
-            <h1 class="left"><a>artists</a></h1>
-        </div>
-        <div class="grouplist">
+
+
+        <h1 class=""><a>artists</a></h1>
         {% for artist in artists %}
         <h5><a href="{% url 'music_app:viewArtist' artist_id=artist.id %}">{{ artist.artist_name }}</a> 
         -<a href="{% url 'music_app:deleteArtist' artist_id=artist.id %}">Remove</a>
         -<a href="{% url 'music_app:editArtist' artist_id=artist.id %}">Update</a>
         </h5>
-        </div>
         {% endfor %}
-    <div class="group1">
-        <h1 class="left"><a>playlists</a></h1>
-    </div>
+        <h1 class=""><a>playlists</a></h1>
     {% for playlist in playlists %}
-    {% if playlist.user_id == request.session.user_id %}
-    
-        
-    <div class="grouplist1">
-        <h5><a href="{% url 'playlist_app:viewPlaylist' playlist_id=playlist.id %}">{{playlist.playlist_name}}</a> | <a href="{% url 'playlist_app:deletePlaylist' playlist_id=playlist.id %}">Delete PlayList</a></h5>
-    </div>   
-
+        {% if playlist.user_id == request.session.user_id %}
+        <h5><a href="{% url 'playlist_app:viewPlaylist' playlist_id=playlist.id %}">{{ playlist.playlist_name }}</a> | <a href="{% url 'playlist_app:deletePlaylist' playlist_id=playlist.id %}">Delete PlayList</a></h5>
         {% endif %}
-        {% endfor %}
-    </div>
-    </div>
+    {% endfor %}
 
-
-</div>
+   
 
 <div col-md-12>
         <h1 class="footer">&copyCopyright 2017 | The Two Brothers</h1>
-    </div> 
+</div> 
+
 
     </body>
 </html>

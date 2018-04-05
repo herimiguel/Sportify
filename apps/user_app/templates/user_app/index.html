@@ -12,22 +12,16 @@
 </head>
 <body background= "{% static 'user_app/css/record.png' %}" >
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+            <!-- <div class=""> -->
                 <div class="jumbotron main">
-
                         <h1>Sportify</h1>
-                        <!-- <img src="{% static 'user_app/css/record.png' %}" alt="" float-right> -->
-                        
-
-                    </div>
+                </div>
                 {% for message in messages %}
                 <h2>{{message}}</h2>
                 {% endfor %}
-           </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 floatright">
+      
+        <div class="col-md-12 front" >
+            <div class="col-md-5 ">
                 <form action="{% url 'user_app:login' %}" method="post">
                     {% csrf_token %}
                     <h1 class="header">login</h1>
@@ -39,6 +33,8 @@
                     </div>
                     <button type="submit" name="login" class="btn btn-primary floatright login loginbtn">login</button>
                 </form>
+            </div>
+            <div class="col-md-5 ">
                 <form action="/register" method="post">
                     {% csrf_token %}
                     <h1 class="header">register</h1>
@@ -60,7 +56,8 @@
                     <button type="submit" class="btn btn-primary floatright login loginbtn">register</button>
                 </form>
             </div>
-        </div>
+            </div>
+        <!-- </div> -->
         <div class="row">
             <div col-md-12>
                 <h1 class="footer">&copyCopyright 2017 | The Two Brothers</h1>

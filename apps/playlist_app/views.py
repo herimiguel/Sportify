@@ -27,7 +27,7 @@ def createPlaylist(request):
         Playlist.objects.create(playlist_name=playlist_name, user_id=user_id)        
         return redirect('music_app:index')
     
-def viewPlaylist(request, playlist_id):
+def viewPlaylist(request, playlist_id,):
     context={
         'playlist': Playlist.objects.get(id=playlist_id),
         'additions': Addition.objects.filter(playlist_id=playlist_id)
